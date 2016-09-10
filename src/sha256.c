@@ -36,6 +36,10 @@
 
 #include "sha256.h"
 
+#ifdef __AVR
+#define LITTLE_ENDIAN
+#endif
+
 #if defined LITTLE_ENDIAN
 #elif defined BIG_ENDIAN
 #else
@@ -44,7 +48,7 @@
 
 #ifndef PROGMEM
 #define PROGMEM
-#define pgm_read_dword(addr) (*((uint32_t*)addr))
+#define pgm_read_dword(addr) (*((const uint32_t*)addr))
 #endif
 
 /*************************************************************************/
